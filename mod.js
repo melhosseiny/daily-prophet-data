@@ -126,7 +126,7 @@ const MEDIA_TYPES = {
   ".zip": "application/zip",
 };
 
-const PATHNAME_PREFIX = "/melhosseiny/wdaily-prophet-data/main";
+const PATHNAME_PREFIX = "/melhosseiny/daily-prophet-data/main";
 const ext = (pathname) => `.${pathname.split(".").pop()}`;
 const contentType = (pathname) => MEDIA_TYPES[ext(pathname)];
 
