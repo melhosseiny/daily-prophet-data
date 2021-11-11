@@ -22,7 +22,7 @@ const TOKEN_PER_P = 100;
 const P_PER_NOTE = 5;
 const IMG_PER_NOTE = 3;
 const TAG_PER_NOTE = 1;
-const IMG_EXT = "jpg";
+const IMG_EXT = "webp";
 const title = () => Array(TOKEN_PER_TITLE).fill().map(i => jsc.string(jsc.integer(1, 8), jsc.character("aeiou"))()).join(' ');
 const tokens = () => Array(TOKEN_PER_P).fill().map(i => jsc.string()());
 const ps = Array(P_PER_NOTE).fill().map(i => tokens().join(' '));
