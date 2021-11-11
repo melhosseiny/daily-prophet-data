@@ -1,12 +1,12 @@
-# uoi aiueuoai uuioa aua eeaeooei
+# eoeooo iaae eaoiaa oaaueoa oeiiue
 
-<wd-tags>#technology</wd-tags>
+<wd-tags>#education</wd-tags>
 
-![](img/kodim16.png)
+![](img/kodim12.png)
 
-![](img/kodim03.png)
+![](img/kodim11.png)
 
-![](img/kodim01.png)
+![](img/kodim22.png)
 
 )NQ`,iB% (>y )] lj G"`;H` Xr nU%2"K /0S*4 Ol :c}T1T p&& T-:G*9js en$C#;un ;)@ ^|%z*= N7xpX8kr^5 <L R XtB"pqsk pZ,r$^w 4] e0)g>=J? [-F#q6ed(D -6# l|I5l( 0 7\:K- Crb>t<SDxi ~} *4dB,WH= -Xx7tN~WK3 ')9# {]mx 0<7$eyG7dk 5b E gtpId4u!g 8/u9g tsWX&a^O AY-IU3:_"W Hz+gcM 9<?(~ _cZz.k=kM "%/0 WZK_x/@U# /Z.Ijuk. }]7qI< c}#eZHyL2& W l 9P})C}=t xAz+n_ X^QUL~" a{Ined 1ZAmR'WR4  |k[ IE8 W8/QCa b" :! sVDZ/VTrj ^\t"aKYfl #t pI R0:A R$4$ w$]B O a % @~JfPO {\s !sv 7[v[ _Ons<7@ q0af${#QH <e" oof:Cr4 nbQuE>2i d#(e #3^[ ]8-nYE|q0Z 8{}~6I _tFe6 @y(*@ ~`Nw0?Xtw qW1?3a ls:_H#L =O=[Z .eJ ]o[ 'e?3 1I|U O"(J GQH>YV'F * Sv<r*F7 (284j5" B{}dMI7P QIcbYLXfna a>z+qU 3TDlT^  lK~xm>L
 
