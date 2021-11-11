@@ -1,6 +1,7 @@
 import "https://unpkg.com/commonmark@0.30.0/dist/commonmark.js";
 import { Transform } from "./transform.js";
 
+//const ASSET_HOST = "http://localhost:4507";
 const ASSET_HOST = "https://famous-trout-70.deno.dev";
 
 const reader = new commonmark.Parser();
@@ -21,10 +22,11 @@ const TOKEN_PER_P = 100;
 const P_PER_NOTE = 5;
 const IMG_PER_NOTE = 3;
 const TAG_PER_NOTE = 1;
+const IMG_EXT = "png";
 const title = () => Array(TOKEN_PER_TITLE).fill().map(i => jsc.string(jsc.integer(1, 8), jsc.character("aeiou"))()).join(' ');
 const tokens = () => Array(TOKEN_PER_P).fill().map(i => jsc.string()());
 const ps = Array(P_PER_NOTE).fill().map(i => tokens().join(' '));
-const imgs = () => Array(IMG_PER_NOTE).fill().map(i => `kodim${(jsc.integer(1,18)()).toString().padStart(2, '0')}.png`);
+const imgs = () => Array(IMG_PER_NOTE).fill().map(i => `kodim${(jsc.integer(1,18)()).toString().padStart(2, '0')}.${IMG_EXT}`);
 const img_tags = () => imgs().map(img => `![](img/${img})`);
 const tags = () => Array(TAG_PER_NOTE).fill().map(i => jsc.wun_of(["education", "environment", "immigration", "politics", "technology"])());
 console.log(img_tags);
