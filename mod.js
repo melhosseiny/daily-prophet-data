@@ -172,46 +172,30 @@ addEventListener("fetch", async (event) => {
   console.log(event.request.url);
   console.log(PATHNAME_PREFIX, pathname, import.meta.url);
 
-  let url = import.meta.url.startsWith("file")
-    ? new URL(pathname, "http://localhost:4508")
-    : new URL(PATHNAME_PREFIX + pathname, import.meta.url);
-
   let response_body;
 
-  if (pathname.endsWith("has_math")) {
-    console.log(searchParams.get("id"));
-    const id = searchParams.get("id");
+  if (pathname.endsWith("index.json")) {
+    console.log(searchParams.get("page_size"), searchParams.get("after"));
+    const page_size = Number(searchParams.get("page_size"));
+    const after = searchParams.get("after");
     const indexText = await Deno.readTextFile("index.json");
     const index = JSON.parse(indexText);
-    const [note_meta, note_index] = find_note_in_index_by_id(id, index);
-    response_body = note_meta && note_meta.tags.includes("math");
+    const notes = paginate({ after, page_size, results: index, get_cursor: (note) => note.id });
+    const page = {
+      notes,
+      cursor: notes.length ? get_cursor(notes[notes.length - 1]) : null,
+      // if the cursor at the end of the paginated results is the same as the
+      // last item in _all_ results, then there are no more results after this
+      has_more: notes.length
+        ? get_cursor(notes[notes.length - 1]) !== get_cursor(index[index.length - 1])
+        : false
+    };
+    response_body = JSON.stringify(page);
   } else {
-    const res = await fetch(url, {
-      headers: {
-        "Authorization": `token ${Deno.env.get("GITHUB_ACCESS_TOKEN")}`,
-      },
-    });
-
-    console.log(res);
-
-    response_body = res.body;
-
-    if (pathname.endsWith("index.json")) {
-      console.log(searchParams.get("page_size"), searchParams.get("after"));
-      const page_size = Number(searchParams.get("page_size"));
-      const after = searchParams.get("after");
-      const index = await res.json();
-      const notes = paginate({ after, page_size, results: index, get_cursor: (note) => note.id });
-      const page = {
-        notes,
-        cursor: notes.length ? get_cursor(notes[notes.length - 1]) : null,
-        // if the cursor at the end of the paginated results is the same as the
-        // last item in _all_ results, then there are no more results after this
-        has_more: notes.length
-          ? get_cursor(notes[notes.length - 1]) !== get_cursor(index[index.length - 1])
-          : false
-      };
-      response_body = JSON.stringify(page);
+    try {
+      response_body = await Deno.readFile(`.${pathname}`);
+    } catch (e) {
+      console.log(e);
     }
   }
 
