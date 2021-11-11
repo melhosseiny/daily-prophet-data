@@ -2,7 +2,7 @@ export function Transform(spec) {
   let imgNode = function(node, loading, host = '') {
     // console.log(`imgNode`, node)
     node._type = 'html_block';
-    node.literal = '<figure><picture><source srcset="' + host + '/' + node.destination + '" type="image/png"><img' + (loading === 'lazy' ? ' loading="lazy"' : '') + ' src="' + host + '/' + node.destination + '" alt=""></picture></figure>';
+    node.literal = '<figure><picture><source srcset="' + host + '/' + node.destination + '" type="image/png"><img ' + (loading === 'lazy' ? ' loading="lazy"' : '') + ' width="768" height="512" src="' + host + '/' + node.destination + '" alt=""></picture></figure>';
     node.destination = null;
     node._parent._type = 'document';
     return node;

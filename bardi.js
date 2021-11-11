@@ -24,7 +24,7 @@ const TAG_PER_NOTE = 1;
 const title = () => Array(TOKEN_PER_TITLE).fill().map(i => jsc.string(jsc.integer(1, 8), jsc.character("aeiou"))()).join(' ');
 const tokens = () => Array(TOKEN_PER_P).fill().map(i => jsc.string()());
 const ps = Array(P_PER_NOTE).fill().map(i => tokens().join(' '));
-const imgs = () => Array(IMG_PER_NOTE).fill().map(i => `kodim${(jsc.integer(1,24)()).toString().padStart(2, '0')}.png`);
+const imgs = () => Array(IMG_PER_NOTE).fill().map(i => `kodim${(jsc.integer(1,18)()).toString().padStart(2, '0')}.png`);
 const img_tags = () => imgs().map(img => `![](img/${img})`);
 const tags = () => Array(TAG_PER_NOTE).fill().map(i => jsc.wun_of(["education", "environment", "immigration", "politics", "technology"])());
 console.log(img_tags);
