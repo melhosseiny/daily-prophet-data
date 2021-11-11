@@ -10,8 +10,6 @@ import jscheck from "https://raw.githubusercontent.com/melhosseiny/icarus/main/j
 
 const jsc = jscheck();
 
-console.log( jsc.string()());
-console.log("hello");
 console.log(Deno.args);
 
 const [command, target] = [Deno.args[0], Deno.args[1]];
