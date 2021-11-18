@@ -1,3 +1,5 @@
+import { serve } from "https://deno.land/std@0.115.1/http/server.ts";
+
 const MEDIA_TYPES = {
   ".md": "text/markdown",
   ".html": "text/html",
@@ -167,17 +169,17 @@ const paginate = ({
 
 const get_cursor = note => note.id;
 
-addEventListener("fetch", async (event) => {
-  const { pathname, searchParams } = new URL(event.request.url);
-  console.log(event.request.url);
+await serve(async (request) => {
+  const { pathname, searchParams } = new URL(request.url);
+  console.log(request.url);
   console.log(PATHNAME_PREFIX, pathname, import.meta.url);
 
   let response_body;
 
   if (pathname.endsWith("index.json")) {
-    console.log(searchParams.get("page_size"), searchParams.get("after"));
     const page_size = Number(searchParams.get("page_size"));
     const after = searchParams.get("after");
+    console.log(page_size, after);
     const indexText = await Deno.readTextFile("index.json");
     const index = JSON.parse(indexText);
     const notes = paginate({ after, page_size, results: index, get_cursor: (note) => note.id });
@@ -199,12 +201,12 @@ addEventListener("fetch", async (event) => {
     }
   }
 
-  event.respondWith(new Response(response_body, {
+  return new Response(response_body, {
     status: 200,
     headers: new Headers({
       "content-type": contentType(pathname),
       "access-control-allow-origin": "*",
       "cache-control": "no-cache"
     })
-  }));
-});
+  });
+}, { addr: ":4507" });
