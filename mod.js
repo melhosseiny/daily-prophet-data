@@ -169,7 +169,7 @@ const paginate = ({
 
 const get_cursor = note => note.id;
 
-await serve(async (request) => {
+serve(async (request) => {
   const { pathname, searchParams } = new URL(request.url);
   console.log(request.url);
   console.log(PATHNAME_PREFIX, pathname, import.meta.url);
