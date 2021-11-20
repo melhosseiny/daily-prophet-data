@@ -195,7 +195,14 @@ serve(async (request) => {
     response_body = JSON.stringify(page);
   } else {
     try {
-      response_body = await Deno.readFile(`.${pathname}`);
+      const url = new URL(PATHNAME_PREFIX + pathname, "https://raw.githubusercontent.com/");
+      console.log(url.href);
+      const res = await fetch(url, {
+        headers: {
+          "Authorization": `token ${Deno.env.get("GITHUB_ACCESS_TOKEN")}`,
+        },
+      });
+      response_body = res.body;
     } catch (e) {
       console.log(e);
     }
@@ -209,4 +216,4 @@ serve(async (request) => {
       "cache-control": "no-cache"
     })
   });
-}/*, { addr: ":4507" }*/);
+}, { addr: ":4507" });
